@@ -1,3 +1,10 @@
+## Для того чтобы запустить проект вам понадобится:
+
+1. Выполнить команду npm i
+2. Выполнить команду npm run dev
+3. Наслаждаться увиденным наверное :)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
