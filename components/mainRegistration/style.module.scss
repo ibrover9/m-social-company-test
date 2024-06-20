@@ -1,0 +1,39 @@
+$background-color-buttons: #71c838;
+$color-text-buttons: white;
+
+.block_recording_data {
+  width: 100%;
+  padding: 20rem 0;
+
+  label {
+    font-size: 21rem;
+    padding: 0;
+  }
+
+  input {
+    border-radius: 1rem;
+    min-width: 335rem;
+    min-height: 31rem;
+    &:focus {
+      border: 1rem solid black;
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 12rem;
+    min-width: 1rem;
+    vertical-align: middle;
+    margin-right: 10rem;
+  }
+}
+.button_container {
+  width: 56%;
+  display: flex;
+  justify-content: center;
+  .button_change_form {
+    background-color: $background-color-buttons;
+    color: $color-text-buttons;
+    padding: 8rem 20rem;
+    border-radius: 5rem;
+  }
+}
