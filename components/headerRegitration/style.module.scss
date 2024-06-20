@@ -1,0 +1,11 @@
+$color-main-text: gray;
+$color-name-text: black;
+
+.text {
+  font-size: 30rem;
+  font-weight: 700;
+  color: $color-main-text;
+  .name {
+    color: $color-name-text;
+  }
+}
