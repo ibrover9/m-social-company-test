@@ -1,0 +1,14 @@
+$color-block-registration: rgb(255, 255, 255);
+$color-block-registration-hover: rgb(231, 231, 231);
+
+.registration__block {
+  width: 1169rem;
+  min-height: 876rem;
+  background-color: $color-block-registration;
+  border-radius: 80rem;
+  box-shadow: 0 0 50rem rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  &:hover {
+    background-color: $color-block-registration-hover;
+  }
+}

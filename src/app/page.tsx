@@ -1,6 +1,7 @@
 import Image from "next/image";
-import variables from "../../styles/variables.module.scss";
+import style from "../app/style.module.scss";
+import Registration from "../../components/Registration/index";
 
 export default function Home() {
-  return <div className={variables.title}>hello</div>;
+  return <Registration />;
 }
