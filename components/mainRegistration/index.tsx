@@ -4,38 +4,28 @@ import style from "./style.module.scss";
 import { useState, useEffect } from "react";
 
 import MaskedInput from "react-text-mask";
+import validator from "validator";
 
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
+import { phoneMask } from "../../constants/phone";
 
 export default function MainRegistration() {
-  const phoneMask = [
-    "+",
-    "7",
-    " ",
-    "(",
-    /\d/,
-    /\d/,
-    /\d/,
-    ")",
-    " ",
-    /\d/,
-    /\d/,
-    /\d/,
-    "-",
-    /\d/,
-    /\d/,
-    "-",
-    /\d/,
-    /\d/,
-  ];
   const [newCities, setNewCities] = useState<City[] | null>(null);
   const [checkBox, setCheckBox] = useState<boolean>(false);
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
-    console.log(checkBox);
   }
+
+  const handleEmailChange = (event: any) => {
+    const emailValue = event.target.value;
+    setEmail(emailValue);
+    setIsValidEmail(validator.isEmail(emailValue));
+    console.log(isValidEmail);
+  };
 
   useEffect(() => {
     getCities(setNewCities);
@@ -104,6 +94,7 @@ export default function MainRegistration() {
                   type="email"
                   id="user-Email"
                   name="user-Email"
+                  onChange={handleEmailChange}
                 />
               </div>
             </>
