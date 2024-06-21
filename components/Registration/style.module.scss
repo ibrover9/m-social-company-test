@@ -13,3 +13,9 @@ $color-block-registration-hover: rgb(231, 231, 231);
     background-color: $color-block-registration-hover;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .registration__block {
+    padding: 30rem 10rem;
+  }
+}

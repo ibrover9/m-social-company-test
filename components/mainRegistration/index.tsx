@@ -33,8 +33,8 @@ export default function MainRegistration() {
         <input type="text" id="user-Email" name="user-Email" />
       </div>
       <div className={style.block_recording_data}>
-        <label htmlFor="user-Email">Электронная почта</label>
-        <input type="checkbox" id="user-Email" name="user-Email" />
+        <label htmlFor="user-consent">Я согласен</label>
+        <input type="checkbox" id="user-consent" name="user-Email" />
         <span>принимать актуальную информацию на email</span>
       </div>
       <div className={style.button_container}>

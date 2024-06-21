@@ -11,6 +11,8 @@ $color-text-buttons: white;
   }
 
   input {
+    outline: none;
+    cursor: pointer;
     border-radius: 1rem;
     min-width: 335rem;
     min-height: 31rem;
@@ -21,9 +23,10 @@ $color-text-buttons: white;
 
   input[type="checkbox"] {
     width: 12rem;
-    min-width: 1rem;
+    min-width: 12rem;
     vertical-align: middle;
     margin-right: 10rem;
+    border-radius: 1rem;
   }
 }
 .button_container {
@@ -35,5 +38,11 @@ $color-text-buttons: white;
     color: $color-text-buttons;
     padding: 8rem 20rem;
     border-radius: 5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .button_container {
+    width: 100%;
   }
 }

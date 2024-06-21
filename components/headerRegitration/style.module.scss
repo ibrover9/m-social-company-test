@@ -10,3 +10,9 @@ $color-name-text: black;
     color: $color-name-text;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .text {
+    text-align: center;
+  }
+}

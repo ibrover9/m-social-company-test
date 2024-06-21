@@ -20,3 +20,17 @@ label {
   display: inline-block;
   min-width: 223rem;
 }
+
+hr {
+  height: 1rem;
+  border-top-width: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 0.2778vw;
+    label {
+      display: block;
+    }
+  }
+}
