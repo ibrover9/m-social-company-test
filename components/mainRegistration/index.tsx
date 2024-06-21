@@ -2,13 +2,40 @@
 import style from "./style.module.scss";
 
 import { useState, useEffect } from "react";
-import InputMask from "react-input-mask";
+
+import MaskedInput from "react-text-mask";
 
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
 
 export default function MainRegistration() {
+  const phoneMask = [
+    "+",
+    "7",
+    " ",
+    "(",
+    /\d/,
+    /\d/,
+    /\d/,
+    ")",
+    " ",
+    /\d/,
+    /\d/,
+    /\d/,
+    "-",
+    /\d/,
+    /\d/,
+    "-",
+    /\d/,
+    /\d/,
+  ];
   const [newCities, setNewCities] = useState<City[] | null>(null);
+  // const [checkBox, setCheckBox] = useState<boolean>(false);
+
+  // function handleCheckBox() {
+  //   setCheckBox(!checkBox);
+  //   console.log(checkBox);
+  // }
 
   useEffect(() => {
     getCities(setNewCities);
@@ -49,7 +76,7 @@ export default function MainRegistration() {
             <label htmlFor="user-password">Пароль</label>
             <input
               placeholder="Введите Пароль"
-              type="text"
+              type="password"
               id="user-password"
               name="user-password"
             />
@@ -58,7 +85,7 @@ export default function MainRegistration() {
             <label htmlFor="repeat-password">Пароль еще раз</label>
             <input
               placeholder="Повторите Пароль"
-              type="text"
+              type="password"
               id="repeat-password"
               name="repeat-password"
             />
@@ -66,27 +93,32 @@ export default function MainRegistration() {
           <hr />
           <div className={style.block_recording_data}>
             <label htmlFor="user-telephone">Номер телефона</label>
-            <InputMask
-              id="user-telephone"
-              name="user-telephone"
+            {/* <InputMask
               placeholder="+7 (***) ***-**-**"
-              mask="+7 (999) 999-99-99"
-            />
+               mask="+7 (999) 999-99-99"
+            /> */}
+            <MaskedInput mask={phoneMask} placeholder="+7 (___) ___-__-__" />
           </div>
           <div className={style.block_recording_data}>
             <label htmlFor="user-Email">Электронная почта</label>
             <input
               placeholder="Введите email"
-              type="text"
+              type="email"
               id="user-Email"
               name="user-Email"
             />
           </div>
           <div className={style.block_recording_data}>
             <label htmlFor="user-consent">Я согласен</label>
-            <input type="checkbox" id="user-consent" name="user-Email" />
+            <input
+              // onClick={handleCheckBox}
+              type="checkbox"
+              id="user-consent"
+              name="user-Email"
+            />
             <span>принимать актуальную информацию на email</span>
           </div>
+
           <div className={style.button_container}>
             <input
               className={style.button_change_form}
