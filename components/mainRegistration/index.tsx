@@ -9,14 +9,17 @@ import validator from "validator";
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
 import { phoneMask } from "../../constants/phone";
+import { allCyrillic } from "../../functions/allCyrillic";
+import { checkMinTwoElements } from "../../functions/checkMinTwoElements";
+import { checkLastCharacterNumber } from "../../functions/checkLastCharacter";
 
 export default function MainRegistration() {
   const [newCities, setNewCities] = useState<City[] | null>(null);
-  const [name, setName] = useState<string | number>("");
+  const [name, setName] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [repeatPassword, setRepeatPassword] = useState<string>("");
-  const [number, setNumber] = useState<string | null>(null);
+  const [number, setNumber] = useState<string>("");
   const [checkBox, setCheckBox] = useState<boolean>(false);
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
@@ -49,6 +52,21 @@ export default function MainRegistration() {
   function handleNumber(event: ChangeEvent<HTMLInputElement>) {
     const number = event.target.value;
     setNumber(number);
+    console.log(number);
+  }
+
+  function verificationAndPostData() {
+    let item = "Ошибка в имени";
+    if (allCyrillic(name) && checkMinTwoElements(name)) {
+      item = "Ошибка в паролях";
+      if (password == repeatPassword) {
+        item = "Ошибка с номером";
+        if (checkLastCharacterNumber(number)) {
+          item = "Ошибок в пунктах нет";
+        }
+      }
+    }
+    alert(`${item}`);
   }
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -174,6 +192,7 @@ export default function MainRegistration() {
 
           <div className={style.button_container}>
             <input
+              onClick={verificationAndPostData}
               className={style.button_change_form}
               type="button"
               value="Изменить"
