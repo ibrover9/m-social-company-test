@@ -1,5 +1,6 @@
 $background-color-buttons: #71c838;
 $color-text-buttons: white;
+$star-color: red;
 
 .block_recording_data {
   width: 100%;
@@ -8,6 +9,12 @@ $color-text-buttons: white;
   label {
     font-size: 21rem;
     padding: 0;
+    &.important {
+      &::after {
+        content: "*";
+        color: $star-color;
+      }
+    }
   }
 
   input {

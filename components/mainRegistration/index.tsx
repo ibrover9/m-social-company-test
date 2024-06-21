@@ -1,7 +1,7 @@
 "use client";
 import style from "./style.module.scss";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import MaskedInput from "react-text-mask";
 import validator from "validator";
@@ -36,17 +36,20 @@ export default function MainRegistration() {
       {newCities && (
         <>
           <div className={style.block_recording_data}>
-            <label htmlFor="user-name">Имя</label>
+            <label className={style.important} htmlFor="user-name">
+              Имя
+            </label>
             <input
               type="text"
               placeholder="Введите имя"
               id="user-name"
               name="user-name"
+              required
             />
           </div>
 
           <div className={style.block_recording_data}>
-            <label className={style.label} htmlFor="user-city">
+            <label className={style.important} htmlFor="user-city">
               Ваш город
             </label>
             <input
@@ -54,6 +57,7 @@ export default function MainRegistration() {
               list="user-cities"
               id="user-city"
               name="city"
+              required
             />
             <datalist id="user-cities">
               {newCities.map((city, index) => (
@@ -63,21 +67,27 @@ export default function MainRegistration() {
           </div>
           <hr />
           <div className={style.block_recording_data}>
-            <label htmlFor="user-password">Пароль</label>
+            <label className={style.important} htmlFor="user-password">
+              Пароль
+            </label>
             <input
               placeholder="Введите Пароль"
               type="password"
               id="user-password"
               name="user-password"
+              required
             />
           </div>
           <div className={style.block_recording_data}>
-            <label htmlFor="repeat-password">Пароль еще раз</label>
+            <label className={style.important} htmlFor="repeat-password">
+              Пароль еще раз
+            </label>
             <input
               placeholder="Повторите Пароль"
               type="password"
               id="repeat-password"
               name="repeat-password"
+              required
             />
           </div>
           <hr />
