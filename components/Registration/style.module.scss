@@ -11,6 +11,14 @@ $color-block-registration-hover: rgb(231, 231, 231);
   padding: 100rem 90rem;
   &:hover {
     background-color: $color-block-registration-hover;
+    input::placeholder {
+      transition: color 0.3s ease, transform 0.3s ease;
+      color: gray;
+    }
+  }
+  input::placeholder {
+    color: white;
+    padding-left: 5rem;
   }
 }
 
