@@ -30,12 +30,12 @@ export default function MainRegistration() {
     /\d/,
   ];
   const [newCities, setNewCities] = useState<City[] | null>(null);
-  // const [checkBox, setCheckBox] = useState<boolean>(false);
+  const [checkBox, setCheckBox] = useState<boolean>(false);
 
-  // function handleCheckBox() {
-  //   setCheckBox(!checkBox);
-  //   console.log(checkBox);
-  // }
+  function handleCheckBox() {
+    setCheckBox(!checkBox);
+    console.log(checkBox);
+  }
 
   useEffect(() => {
     getCities(setNewCities);
@@ -93,25 +93,25 @@ export default function MainRegistration() {
           <hr />
           <div className={style.block_recording_data}>
             <label htmlFor="user-telephone">Номер телефона</label>
-            {/* <InputMask
-              placeholder="+7 (***) ***-**-**"
-               mask="+7 (999) 999-99-99"
-            /> */}
             <MaskedInput mask={phoneMask} placeholder="+7 (___) ___-__-__" />
           </div>
-          <div className={style.block_recording_data}>
-            <label htmlFor="user-Email">Электронная почта</label>
-            <input
-              placeholder="Введите email"
-              type="email"
-              id="user-Email"
-              name="user-Email"
-            />
-          </div>
+          {checkBox && (
+            <>
+              <div className={style.block_recording_data}>
+                <label htmlFor="user-Email">Электронная почта</label>
+                <input
+                  placeholder="Введите email"
+                  type="email"
+                  id="user-Email"
+                  name="user-Email"
+                />
+              </div>
+            </>
+          )}
           <div className={style.block_recording_data}>
             <label htmlFor="user-consent">Я согласен</label>
             <input
-              // onClick={handleCheckBox}
+              onClick={handleCheckBox}
               type="checkbox"
               id="user-consent"
               name="user-Email"
