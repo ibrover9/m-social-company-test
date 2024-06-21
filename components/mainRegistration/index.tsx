@@ -2,6 +2,7 @@
 import style from "./style.module.scss";
 
 import { useState, useEffect } from "react";
+import InputMask from "react-input-mask";
 
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
@@ -65,11 +66,11 @@ export default function MainRegistration() {
           <hr />
           <div className={style.block_recording_data}>
             <label htmlFor="user-telephone">Номер телефона</label>
-            <input
-              placeholder="+7 (***) ***-**-**"
-              type="tel"
+            <InputMask
               id="user-telephone"
               name="user-telephone"
+              placeholder="+7 (***) ***-**-**"
+              mask="+7 (999) 999-99-99"
             />
           </div>
           <div className={style.block_recording_data}>
