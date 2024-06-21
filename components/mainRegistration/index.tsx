@@ -1,7 +1,7 @@
 "use client";
 import style from "./style.module.scss";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 
 import MaskedInput from "react-text-mask";
 import validator from "validator";
@@ -12,6 +12,11 @@ import { phoneMask } from "../../constants/phone";
 
 export default function MainRegistration() {
   const [newCities, setNewCities] = useState<City[] | null>(null);
+  const [name, setName] = useState<string | number>("");
+  const [city, setCity] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [repeatPassword, setRepeatPassword] = useState<string>("");
+  const [number, setNumber] = useState<string | null>(null);
   const [checkBox, setCheckBox] = useState<boolean>(false);
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
@@ -20,11 +25,36 @@ export default function MainRegistration() {
     setCheckBox(!checkBox);
   }
 
-  const handleEmailChange = (event: any) => {
+  function handleName(event: ChangeEvent<HTMLInputElement>) {
+    const name = event.target.value;
+    setName(name);
+  }
+
+  function handleCity(event: any) {
+    const city = event.target.value;
+    setCity(city);
+    console.log(city);
+  }
+
+  function handlePassword(event: ChangeEvent<HTMLInputElement>) {
+    const password = event.target.value;
+    setPassword(password);
+  }
+
+  function handleRepeatPassword(event: ChangeEvent<HTMLInputElement>) {
+    const Repeatpassword = event.target.value;
+    setRepeatPassword(Repeatpassword);
+  }
+
+  function handleNumber(event: ChangeEvent<HTMLInputElement>) {
+    const number = event.target.value;
+    setNumber(number);
+  }
+
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const emailValue = event.target.value;
     setEmail(emailValue);
     setIsValidEmail(validator.isEmail(emailValue));
-    console.log(isValidEmail);
   };
 
   useEffect(() => {
@@ -44,6 +74,10 @@ export default function MainRegistration() {
               placeholder="Введите имя"
               id="user-name"
               name="user-name"
+              value={name}
+              onChange={(event) => {
+                handleName(event);
+              }}
               required
             />
           </div>
@@ -52,18 +86,22 @@ export default function MainRegistration() {
             <label className={style.important} htmlFor="user-city">
               Ваш город
             </label>
-            <input
-              placeholder="Выберите город"
-              list="user-cities"
+            <select
+              value={city}
+              onChange={handleCity}
               id="user-city"
               name="city"
               required
-            />
-            <datalist id="user-cities">
+            >
+              <option value="" disabled>
+                Выберите город
+              </option>
               {newCities.map((city, index) => (
-                <option key={index} value={city.city} />
+                <option key={index} value={city.city}>
+                  {city.city}
+                </option>
               ))}
-            </datalist>
+            </select>
           </div>
           <hr />
           <div className={style.block_recording_data}>
@@ -75,6 +113,10 @@ export default function MainRegistration() {
               type="password"
               id="user-password"
               name="user-password"
+              value={password}
+              onChange={(event) => {
+                handlePassword(event);
+              }}
               required
             />
           </div>
@@ -87,13 +129,23 @@ export default function MainRegistration() {
               type="password"
               id="repeat-password"
               name="repeat-password"
+              value={repeatPassword}
+              onChange={(event) => {
+                handleRepeatPassword(event);
+              }}
               required
             />
           </div>
           <hr />
           <div className={style.block_recording_data}>
             <label htmlFor="user-telephone">Номер телефона</label>
-            <MaskedInput mask={phoneMask} placeholder="+7 (___) ___-__-__" />
+            <MaskedInput
+              onChange={(event) => {
+                handleNumber(event);
+              }}
+              mask={phoneMask}
+              placeholder="+7 (___) ___-__-__"
+            />
           </div>
           {checkBox && (
             <>

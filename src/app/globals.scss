@@ -26,6 +26,15 @@ hr {
   border-top-width: 1rem;
 }
 
+select {
+  padding-left: 5rem;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1rem;
+  min-width: 335rem;
+  min-height: 31rem;
+}
+
 @media screen and (max-width: 600px) {
   html {
     font-size: 0.2778vw;
