@@ -1,6 +1,6 @@
 import { City } from "../models/Cities";
 
-export function itiesSortalphabet(citiesMoreFiftyThousand: City[]) {
+export function citiesSortalphabet(citiesMoreFiftyThousand: City[]) {
   const citiesSortalphabet: City[] = citiesMoreFiftyThousand.sort(function (
     oneElement: City,
     secondElement: City

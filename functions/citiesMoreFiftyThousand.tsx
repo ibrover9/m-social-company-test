@@ -1,6 +1,6 @@
 import { City } from "../models/Cities";
 
-export function itiesMoreFiftyThousand(cities: City[]) {
+export function citiesMoreFiftyThousand(cities: City[]) {
   const citiesMoreFiftyThousand = cities.filter(function (element: City) {
     return parseInt(element.population) > 50000;
   });
