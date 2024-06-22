@@ -1,6 +1,6 @@
 import { City } from "../models/Cities";
 
-export function FirstCityMaxPopulation(citiesSortalphabet: City[]) {
+export function firstCityMaxPopulation(citiesSortalphabet: City[]) {
   const maxPopulationCity = citiesSortalphabet.reduce(
     (maxCity: City, currentCity: City) => {
       return parseInt(currentCity.population) > parseInt(maxCity.population)

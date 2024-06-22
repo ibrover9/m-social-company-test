@@ -2,9 +2,9 @@ import axios from "axios";
 
 import { Cities, City } from "../models/Cities";
 
-import { CitiesMoreFiftyThousand } from "../functions/citiesMoreFiftyThousand";
-import { CitiesSortalphabet } from "../functions/citiesSortalphabet";
-import { FirstCityMaxPopulation } from "../functions/firstCityMaxPopulation";
+import { citiesMoreFiftyThousand } from "../functions/citiesMoreFiftyThousand";
+import { citiesSortalphabet } from "../functions/citiesSortalphabet";
+import { firstCityMaxPopulation } from "../functions/firstCityMaxPopulation";
 
 export async function getCities(
   setNewCities: React.Dispatch<React.SetStateAction<City[] | null>>
@@ -13,13 +13,13 @@ export async function getCities(
     const { data: cities } = await axios.get(
       "https://5d0eb32023e60965.mokky.dev/city"
     );
-    const citiesMoreFiftyThousand = CitiesMoreFiftyThousand(cities);
+    const CitiesMoreFiftyThousand = citiesMoreFiftyThousand(cities);
 
-    const citiesSortalphabet: City[] = CitiesSortalphabet(
-      citiesMoreFiftyThousand
+    const CitiesSortalphabet: City[] = citiesSortalphabet(
+      CitiesMoreFiftyThousand
     );
 
-    const maxPopulationCity = FirstCityMaxPopulation(citiesSortalphabet);
+    const maxPopulationCity = firstCityMaxPopulation(CitiesSortalphabet);
     console.log(maxPopulationCity);
     setNewCities(maxPopulationCity);
   } catch (error) {
