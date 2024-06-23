@@ -1,3 +1,10 @@
+/**
+ * Получает список городов с указанного API-эндпоинта и выполнят сортировки.
+ *
+ * @param {React.Dispatch<React.SetStateAction<City[] | null>>} setNewCities - Функция для обновления состояния списка городов.
+ *
+ */
+
 import axios from "axios";
 
 import { City } from "../models/Cities";
