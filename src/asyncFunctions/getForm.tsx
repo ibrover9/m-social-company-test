@@ -6,8 +6,7 @@ export async function postForm(
   password: string,
   number: string,
   city: string,
-  email: string,
-  setIsButtonDisabled: React.Dispatch<React.SetStateAction<boolean>>
+  email: string
 ) {
   try {
     const objectForm = {
@@ -19,7 +18,6 @@ export async function postForm(
     };
     const { data: cities } = await axios.patch(`${FORM.CHANGE}/1`, objectForm);
     console.log("Данные успешно отправлены:", cities);
-    setIsButtonDisabled(false);
   } catch (error) {
     console.error("Ошибка при отправке данных:", error);
     alert("Ошибка при отправке данных:");

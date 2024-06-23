@@ -24,6 +24,7 @@ export default function MainRegistration() {
   const [checkBox, setCheckBox] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
@@ -55,20 +56,6 @@ export default function MainRegistration() {
     setNumber(number);
     console.log(number);
   }
-
-  // function verificationAndPostData() {
-  //   let item = "Ошибка в имени";
-  //   if (allCyrillic(name) && checkMinTwoElements(name)) {
-  //     item = "Ошибка в паролях";
-  //     if (password == repeatPassword) {
-  //       item = "Ошибка с номером";
-  //       if (checkLastCharacterNumber(number)) {
-  //         item = "Ошибок в пунктах нет";
-  //       }
-  //     }
-  //   }
-  //   alert(`${item}`);
-  // }
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const emailValue = event.target.value;
@@ -195,6 +182,7 @@ export default function MainRegistration() {
             <input
               onClick={() =>
                 verificationAndPostData(
+                  setIsButtonDisabled,
                   name,
                   password,
                   repeatPassword,
@@ -205,9 +193,14 @@ export default function MainRegistration() {
                   isValidEmail
                 )
               }
-              className={style.button_change_form}
+              className={
+                isButtonDisabled
+                  ? style.button_change_form_stop
+                  : style.button_change_form
+              }
               type="button"
               value="Изменить"
+              disabled={isButtonDisabled}
             />
           </div>
         </>
