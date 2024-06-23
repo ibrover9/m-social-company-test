@@ -5,7 +5,7 @@ import { City } from "../models/Cities";
 import { citiesMoreSpecifiedNumber } from "../functions/citiesMoreSpecifiedNumber";
 import { citiesSortalphabet } from "../functions/citiesSortalphabet";
 import { firstCityMaxPopulation } from "../functions/firstCityMaxPopulation";
-import { LIST } from "../constants/constants";
+import { LIST } from "../constants";
 
 export async function getCities(
   setNewCities: React.Dispatch<React.SetStateAction<City[] | null>>
