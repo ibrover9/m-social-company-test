@@ -8,7 +8,7 @@ import validator from "validator";
 
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
-import { phoneMask } from "../../constants/phone";
+import { phoneMask } from "../../utils/phone";
 import { allCyrillic } from "../../functions/allCyrillic";
 import { checkMinTwoElements } from "../../functions/checkMinTwoElements";
 import { checkLastCharacterNumber } from "../../functions/checkLastCharacter";
