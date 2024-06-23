@@ -7,7 +7,7 @@ import { citiesSortalphabet } from "../functions/citiesSortalphabet";
 import { firstCityMaxPopulation } from "../functions/firstCityMaxPopulation";
 import { LIST } from "../constants";
 
-export async function getCities(
+export async function getListCities(
   setNewCities: React.Dispatch<React.SetStateAction<City[] | null>>
 ): Promise<void> {
   try {

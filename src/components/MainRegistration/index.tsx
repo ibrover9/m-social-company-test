@@ -7,7 +7,7 @@ import MaskedInput from "react-text-mask";
 import validator from "validator";
 
 import { Cities, City } from "../../models/Cities";
-import { getCities } from "../../asyncFunctions/GetCities";
+import { getListCities } from "../../asyncFunctions/getCities";
 import { phoneMask } from "../../constants";
 
 import { verificationAndPostData } from "@/functions/verificationAndPostData";
@@ -77,7 +77,7 @@ export default function MainRegistration() {
 
   useEffect(() => {
     setDateAndTime(` ${localStorage.getItem("date_and_time")}`);
-    getCities(setNewCities);
+    getListCities(setNewCities);
   }, []);
 
   useEffect(() => {
