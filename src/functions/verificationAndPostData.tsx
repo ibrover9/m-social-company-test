@@ -7,6 +7,7 @@ import { newDateAndTime } from "./newDateAndTime";
 export function verificationAndPostData(
   setIsButtonDisabled: React.Dispatch<React.SetStateAction<boolean>>,
   setDateAndTime: React.Dispatch<React.SetStateAction<string>>,
+  setCleaningFormState: React.Dispatch<React.SetStateAction<boolean>>,
   name: string,
   password: string,
   repeatPassword: string,
@@ -29,13 +30,29 @@ export function verificationAndPostData(
           console.log(isValidEmail);
           if (isValidEmail) {
             item = "Все отправлено";
-            postForm(name, password, number, city, email, setIsButtonDisabled);
+            postForm(
+              name,
+              password,
+              number,
+              city,
+              email,
+              setIsButtonDisabled,
+              setCleaningFormState
+            );
             newDateAndTime(setDateAndTime);
           }
         } else {
           if (isValidEmail || email == "") {
             item = "Все отправлено";
-            postForm(name, password, number, city, email, setIsButtonDisabled);
+            postForm(
+              name,
+              password,
+              number,
+              city,
+              email,
+              setIsButtonDisabled,
+              setCleaningFormState
+            );
             newDateAndTime(setDateAndTime);
           }
         }

@@ -11,6 +11,7 @@ import { getCities } from "../../asyncFunctions/GetCities";
 import { phoneMask } from "../../constants";
 
 import { verificationAndPostData } from "@/functions/verificationAndPostData";
+import React from "react";
 
 export default function MainRegistration() {
   const [newCities, setNewCities] = useState<City[] | null>(null);
@@ -23,7 +24,7 @@ export default function MainRegistration() {
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
-  const [cleaningForm, setCleaningForm] = useState<boolean>(false);
+  const [cleaningFormState, setCleaningFormState] = useState<boolean>(false);
   const [dateAndTime, setDateAndTime] = useState<string>("");
 
   function handleCheckBox() {
@@ -57,6 +58,17 @@ export default function MainRegistration() {
     console.log(number);
   }
 
+  function cleaningForm() {
+    setName("");
+    setCity("");
+    setPassword("");
+    setRepeatPassword("");
+    setNumber("");
+    setEmail("");
+    setCheckBox(false);
+    setCleaningFormState(false);
+  }
+
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const emailValue = event.target.value;
     setEmail(emailValue);
@@ -67,6 +79,12 @@ export default function MainRegistration() {
     setDateAndTime(` ${localStorage.getItem("date_and_time")}`);
     getCities(setNewCities);
   }, []);
+
+  useEffect(() => {
+    if (cleaningFormState) {
+      cleaningForm();
+    }
+  }, [cleaningFormState]);
 
   return (
     <>
@@ -152,6 +170,7 @@ export default function MainRegistration() {
               }}
               mask={phoneMask}
               placeholder="+7 (___) ___-__-__"
+              value={number}
             />
           </div>
 
@@ -166,6 +185,7 @@ export default function MainRegistration() {
                 type="email"
                 id="user-Email"
                 name="user-Email"
+                value={email}
                 onChange={handleEmailChange}
               />
             </div>
@@ -188,6 +208,7 @@ export default function MainRegistration() {
                 verificationAndPostData(
                   setIsButtonDisabled,
                   setDateAndTime,
+                  setCleaningFormState,
                   name,
                   password,
                   repeatPassword,
