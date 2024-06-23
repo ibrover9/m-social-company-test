@@ -55,7 +55,6 @@ export default function MainRegistration() {
   function handleNumber(event: ChangeEvent<HTMLInputElement>) {
     const number = event.target.value;
     setNumber(number);
-    console.log(number);
   }
 
   function cleaningForm() {

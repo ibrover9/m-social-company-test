@@ -19,7 +19,6 @@ export async function postForm(
       email: email,
     };
     const { data: cities } = await axios.patch(`${FORM.CHANGE}/1`, objectForm);
-    console.log("Данные успешно отправлены:", cities);
     setIsButtonDisabled(false);
     setCleaningFormState(true);
   } catch (error) {
