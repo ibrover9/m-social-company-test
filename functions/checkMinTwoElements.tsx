@@ -1,5 +1,10 @@
-export function checkMinTwoElements(str: string): boolean {
-  const elements = str.split(" ");
+/**
+ * Проверяет, содержит ли строка как минимум два символа.
+ *
+ * @param {string} str - Строка, которую нужно проверить.
+ * @returns {boolean} - Возвращает true, если строка содержит два или более символа, иначе false.
+ */
 
-  return elements.length >= 2;
+export function checkMinTwoElements(str: string): boolean {
+  return str.length >= 2;
 }

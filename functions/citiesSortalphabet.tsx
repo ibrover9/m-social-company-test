@@ -1,5 +1,12 @@
 import { City } from "../models/Cities";
 
+/**
+ * Сортирует города в алфавитном порядке.
+ *
+ * @param {City[]} citiesMoreFiftyThousand - Массив объектов городов, которые нужно отсортировать.
+ * @returns {City[]} - Отсортированный в алфавитном порядке массив городов.
+ */
+
 export function citiesSortalphabet(citiesMoreFiftyThousand: City[]) {
   const citiesSortalphabet: City[] = citiesMoreFiftyThousand.sort(function (
     oneElement: City,
