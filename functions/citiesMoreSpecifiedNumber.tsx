@@ -1,8 +1,8 @@
 import { City } from "../models/Cities";
 
-export function citiesMoreFiftyThousand(cities: City[]) {
+export function citiesMoreSpecifiedNumber(cities: City[], number: number) {
   const citiesMoreFiftyThousand = cities.filter(function (element: City) {
-    return parseInt(element.population) > 50000;
+    return parseInt(element.population) > number;
   });
   return citiesMoreFiftyThousand;
 }
