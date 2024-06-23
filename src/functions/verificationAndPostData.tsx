@@ -2,10 +2,11 @@ import { allCyrillic } from "../functions/allCyrillic";
 import { checkMinTwoElements } from "../functions/checkMinTwoElements";
 import { checkLastCharacterNumber } from "../functions/checkLastCharacter";
 import { postForm } from "@/asyncFunctions/postForm";
-import { Dispatch, SetStateAction } from "react";
+import { newDateAndTime } from "./newDateAndTime";
 
 export function verificationAndPostData(
   setIsButtonDisabled: React.Dispatch<React.SetStateAction<boolean>>,
+  setDateAndTime: React.Dispatch<React.SetStateAction<string>>,
   name: string,
   password: string,
   repeatPassword: string,
@@ -29,11 +30,13 @@ export function verificationAndPostData(
           if (isValidEmail) {
             item = "Все отправлено";
             postForm(name, password, number, city, email, setIsButtonDisabled);
+            newDateAndTime(setDateAndTime);
           }
         } else {
           if (isValidEmail || email == "") {
             item = "Все отправлено";
             postForm(name, password, number, city, email, setIsButtonDisabled);
+            newDateAndTime(setDateAndTime);
           }
         }
       }

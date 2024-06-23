@@ -9,9 +9,7 @@ import validator from "validator";
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
 import { phoneMask } from "../../constants";
-// import { allCyrillic } from "../../functions/allCyrillic";
-// import { checkMinTwoElements } from "../../functions/checkMinTwoElements";
-// import { checkLastCharacterNumber } from "../../functions/checkLastCharacter";
+
 import { verificationAndPostData } from "@/functions/verificationAndPostData";
 
 export default function MainRegistration() {
@@ -25,6 +23,8 @@ export default function MainRegistration() {
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
+  const [cleaningForm, setCleaningForm] = useState<boolean>(false);
+  const [dateAndTime, setDateAndTime] = useState<string>("");
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
@@ -64,6 +64,7 @@ export default function MainRegistration() {
   };
 
   useEffect(() => {
+    setDateAndTime(` ${localStorage.getItem("date_and_time")}`);
     getCities(setNewCities);
   }, []);
 
@@ -153,22 +154,25 @@ export default function MainRegistration() {
               placeholder="+7 (___) ___-__-__"
             />
           </div>
-          {checkBox && (
-            <>
-              <div className={style.block_recording_data}>
-                <label htmlFor="user-Email">Электронная почта</label>
-                <input
-                  placeholder="Введите email"
-                  type="email"
-                  id="user-Email"
-                  name="user-Email"
-                  onChange={handleEmailChange}
-                />
-              </div>
-            </>
-          )}
+
+          <>
+            <div className={style.block_recording_data}>
+              <label htmlFor="user-Email">
+                Электронная почта{" "}
+                {checkBox && <span className="text-red-500">*</span>}
+              </label>
+              <input
+                placeholder="Введите email"
+                type="email"
+                id="user-Email"
+                name="user-Email"
+                onChange={handleEmailChange}
+              />
+            </div>
+          </>
           <div className={style.block_recording_data}>
             <label htmlFor="user-consent">Я согласен</label>
+
             <input
               onClick={handleCheckBox}
               type="checkbox"
@@ -183,6 +187,7 @@ export default function MainRegistration() {
               onClick={() =>
                 verificationAndPostData(
                   setIsButtonDisabled,
+                  setDateAndTime,
                   name,
                   password,
                   repeatPassword,
@@ -202,6 +207,7 @@ export default function MainRegistration() {
               value="Изменить"
               disabled={isButtonDisabled}
             />
+            <div className={style.date_and_time}>{dateAndTime}</div>
           </div>
         </>
       )}
