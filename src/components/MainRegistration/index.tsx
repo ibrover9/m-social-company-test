@@ -9,9 +9,10 @@ import validator from "validator";
 import { Cities, City } from "../../models/Cities";
 import { getCities } from "../../asyncFunctions/GetCities";
 import { phoneMask } from "../../constants";
-import { allCyrillic } from "../../functions/allCyrillic";
-import { checkMinTwoElements } from "../../functions/checkMinTwoElements";
-import { checkLastCharacterNumber } from "../../functions/checkLastCharacter";
+// import { allCyrillic } from "../../functions/allCyrillic";
+// import { checkMinTwoElements } from "../../functions/checkMinTwoElements";
+// import { checkLastCharacterNumber } from "../../functions/checkLastCharacter";
+import { verificationAndPostData } from "@/functions/verificationAndPostData";
 
 export default function MainRegistration() {
   const [newCities, setNewCities] = useState<City[] | null>(null);
@@ -21,8 +22,8 @@ export default function MainRegistration() {
   const [repeatPassword, setRepeatPassword] = useState<string>("");
   const [number, setNumber] = useState<string>("");
   const [checkBox, setCheckBox] = useState<boolean>(false);
-  const [email, setEmail] = useState("");
-  const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>("");
+  const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
@@ -55,19 +56,19 @@ export default function MainRegistration() {
     console.log(number);
   }
 
-  function verificationAndPostData() {
-    let item = "Ошибка в имени";
-    if (allCyrillic(name) && checkMinTwoElements(name)) {
-      item = "Ошибка в паролях";
-      if (password == repeatPassword) {
-        item = "Ошибка с номером";
-        if (checkLastCharacterNumber(number)) {
-          item = "Ошибок в пунктах нет";
-        }
-      }
-    }
-    alert(`${item}`);
-  }
+  // function verificationAndPostData() {
+  //   let item = "Ошибка в имени";
+  //   if (allCyrillic(name) && checkMinTwoElements(name)) {
+  //     item = "Ошибка в паролях";
+  //     if (password == repeatPassword) {
+  //       item = "Ошибка с номером";
+  //       if (checkLastCharacterNumber(number)) {
+  //         item = "Ошибок в пунктах нет";
+  //       }
+  //     }
+  //   }
+  //   alert(`${item}`);
+  // }
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const emailValue = event.target.value;
@@ -192,7 +193,18 @@ export default function MainRegistration() {
 
           <div className={style.button_container}>
             <input
-              onClick={verificationAndPostData}
+              onClick={() =>
+                verificationAndPostData(
+                  name,
+                  password,
+                  repeatPassword,
+                  number,
+                  city,
+                  checkBox,
+                  email,
+                  isValidEmail
+                )
+              }
               className={style.button_change_form}
               type="button"
               value="Изменить"

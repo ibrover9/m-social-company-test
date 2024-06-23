@@ -6,6 +6,10 @@ export const LIST = {
   CITY: `${SERVER.MOKKY}/city`,
 };
 
+export const FORM = {
+  CHANGE: `${SERVER.MOKKY}/rezult`,
+};
+
 export const phoneMask = [
   "+",
   "7",
