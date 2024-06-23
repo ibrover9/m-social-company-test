@@ -44,7 +44,6 @@ export function verificationAndPostData(
         // item = "Ошибок в пунктах нет";
         item = "Некорректная почта";
         if (checkBox) {
-          console.log(isValidEmail);
           if (isValidEmail) {
             item = "Все отправлено";
             postForm(

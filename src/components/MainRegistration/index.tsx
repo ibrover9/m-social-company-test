@@ -39,7 +39,6 @@ export default function MainRegistration() {
   function handleCity(event: any) {
     const city = event.target.value;
     setCity(city);
-    console.log(city);
   }
 
   function handlePassword(event: ChangeEvent<HTMLInputElement>) {
