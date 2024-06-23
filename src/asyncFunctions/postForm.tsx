@@ -6,8 +6,8 @@
  * @param {string} number - Номер телефона пользователя.
  * @param {string} city - Город пользователя.
  * @param {string} email - Email пользователя.
- * @param {React.Dispatch<React.SetStateAction<boolean>>} setIsButtonDisabled - Состояние кнопки.
- * @param {React.Dispatch<React.SetStateAction<boolean>>} setCleaningFormState - Состояние для активации чистки формы.
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} setIsButtonDisabled - Функция Состояния кнопки.
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} setCleaningFormState - Функция Состояния для активации чистки формы.
  */
 
 import axios from "axios";
